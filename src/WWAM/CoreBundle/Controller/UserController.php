@@ -10,9 +10,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UserController extends FOSRestController
 {
-    /**
-     * @Rest\View
-     */
     public function indexAction()
     {
         $users = $this->getDoctrine()
