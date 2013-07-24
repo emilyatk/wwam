@@ -24,16 +24,22 @@ class Deskbank
     /**
      * @var integer
      *
-     * @ORM\Column(name="depth", type="integer")
+     * @ORM\Column(name="width", type="integer")
      */
-    private $depth;
+    private $width;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="width", type="integer")
+     * @ORM\Column(name="depth", type="integer")
      */
-    private $width;
+    private $depth;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Floor", inversedBy="floor")
+     * @ORM\JoinColumn(name="floor_id", referencedColumnName="id")
+     */
+    private $floor;
 
 
     /**
@@ -44,6 +50,29 @@ class Deskbank
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set width
+     *
+     * @param integer $width
+     * @return Deskbank
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+    
+        return $this;
+    }
+
+    /**
+     * Get width
+     *
+     * @return integer 
+     */
+    public function getWidth()
+    {
+        return $this->width;
     }
 
     /**
@@ -70,25 +99,25 @@ class Deskbank
     }
 
     /**
-     * Set width
+     * Set floor
      *
-     * @param integer $width
+     * @param \WWAM\CoreBundle\Entity\Floor $floor
      * @return Deskbank
      */
-    public function setWidth($width)
+    public function setFloor(\WWAM\CoreBundle\Entity\Floor $floor = null)
     {
-        $this->width = $width;
+        $this->floor = $floor;
     
         return $this;
     }
 
     /**
-     * Get width
+     * Get floor
      *
-     * @return integer 
+     * @return \WWAM\CoreBundle\Entity\Floor 
      */
-    public function getWidth()
+    public function getFloor()
     {
-        return $this->width;
+        return $this->floor;
     }
 }
