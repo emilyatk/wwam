@@ -1,0 +1,4 @@
+wwam_core:
+    resource: "@WWAMCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
