@@ -16,11 +16,15 @@ class UserController extends FOSRestController
                       ->getRepository('WWAMCoreBundle:User')
                       ->findAll();
         
-        return array('users', $users);
+        return $users;
     }
     
     public function getAction($id)
     {
-        return array();
+        $user = $this->getDoctrine()
+                     ->getRepository('WWAMCoreBundle:User')
+                     ->find($id);
+        
+        return $user;
     }
 }
